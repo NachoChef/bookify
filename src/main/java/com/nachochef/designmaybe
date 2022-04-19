@@ -1,0 +1,34 @@
+data design
+
+books -
+id, isbn, title, author, year
+
+users -
+id, username, realname, email, created
+
+book_ratings -
+id, book_id, user_id, rating, text, created
+
+open questions:
+best way to keep avg rating updated?
+
+architecture
+
+book controller -
+/books/info/<id>
+retrieveBook (GET) -> books[id]
+
+/books/create
+createBook (POST) -> (isbn, title, author, year) -> book_id
+
+/books/update/<id>
+updateBook (POST) -> ?
+
+
+user controller -
+/users/info/<id>
+retrieveUser (GET) -> users[id]
+
+/users/register/
+createUser (POST) -> (user_name, name, email) -> user_id
+
