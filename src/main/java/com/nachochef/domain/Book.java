@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import static javax.persistence.GenerationType.AUTO;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Entity
