@@ -31,16 +31,20 @@ public class Rating {
     @Column(name = "rating", nullable = false)
     private int rating;
 
+    @Column(name = "rating_text")
+    private String ratingText;
+
     @Column(name = "date_created", nullable = false)
     private String dateCreated;
 
     /**
      * For new ratings without an id
      */
-    public Rating(String userId, String bookId, int rating, String dateCreated) {
+    public Rating(String userId, String bookId, int rating, String ratingText, String dateCreated) {
         this.userId = userId;
         this.bookId = bookId;
         this.rating = rating;
+        this.ratingText = ratingText;
         this.dateCreated = dateCreated;
     }
 }
