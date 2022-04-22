@@ -1,9 +1,11 @@
 package com.nachochef.repo;
 
 import com.nachochef.domain.Rating;
+import jakarta.inject.Singleton;
 
 import java.util.Optional;
 
+@Singleton
 public class RatingRepository implements Repository<Rating> {
     @Override
     public Optional<Rating> findById(long id) {
@@ -12,11 +14,6 @@ public class RatingRepository implements Repository<Rating> {
 
     @Override
     public Rating save(Rating objectToSave) {
-        return null;
-    }
-
-    @Override
-    public Rating saveWithException(Rating objectToSave) {
         return null;
     }
 

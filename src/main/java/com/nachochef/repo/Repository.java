@@ -12,8 +12,6 @@ public interface Repository<T> {
 
     T save(@NotNull T objectToSave);
 
-    T saveWithException(@NotNull T objectToSave);
-
     void deleteById(long id);
 
     int update(T objectToUpdate);

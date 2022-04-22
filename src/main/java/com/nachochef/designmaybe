@@ -32,3 +32,5 @@ retrieveUser (GET) -> users[id]
 /users/register/
 createUser (POST) -> (user_name, name, email) -> user_id
 
+
+search/sort by ratings will get a little nasty unless I keep a rough overall rating on the book, but then that needs to be updated with a cron or something
