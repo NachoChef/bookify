@@ -2,6 +2,7 @@ package com.nachochef.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Entity
 @Table(name="books")

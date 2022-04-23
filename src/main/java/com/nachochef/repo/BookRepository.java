@@ -2,12 +2,12 @@ package com.nachochef.repo;
 
 import com.nachochef.domain.Book;
 import io.micronaut.transaction.annotation.ReadOnly;
+import io.micronaut.transaction.annotation.TransactionalAdvice;
 import jakarta.inject.Singleton;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.transaction.NotSupportedException;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,20 +39,20 @@ public class BookRepository implements Repository<Book> {
     }
 
     @Override
-    @Transactional
+    @TransactionalAdvice
     public Book save(Book objectToSave) {
         entityManager.persist(objectToSave);
         return objectToSave;
     }
 
     @Override
-    @Transactional
+    @TransactionalAdvice
     public void deleteById(long id) {
         findById(id).ifPresent(entityManager::remove);
     }
 
     @Override
-    @Transactional
+    @TransactionalAdvice
     public int update(Book objectToUpdate) {
         throw new PersistenceException(new NotSupportedException("Book entries are immutable."));
     }
