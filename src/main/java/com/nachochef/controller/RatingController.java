@@ -1,8 +1,8 @@
 package com.nachochef.controller;
 
-import com.nachochef.domain.Book;
-import com.nachochef.repo.BookRepository;
-import com.nachochef.request.BookSaveRequest;
+import com.nachochef.domain.Rating;
+import com.nachochef.repo.RatingRepository;
+import com.nachochef.request.RatingSaveRequest;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
@@ -16,23 +16,23 @@ import io.micronaut.scheduling.annotation.ExecuteOn;
 import javax.validation.Valid;
 
 @ExecuteOn(TaskExecutors.IO)
-@Controller("/books")
-public class BookController {
-    private final BookRepository bookRepository;
+@Controller("/ratings")
+public class RatingController {
+    private final RatingRepository ratingRepository;
 
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public RatingController(RatingRepository ratingRepository) {
+        this.ratingRepository = ratingRepository;
     }
 
     @Get("/info")
     @Produces(MediaType.APPLICATION_JSON)
-    public Book getBook(@QueryValue int bookId) {
-        return bookRepository.findById(bookId).orElse(null);
+    public Rating getSingleRating(@QueryValue int bookId) {
+        return ratingRepository.findById(bookId).orElse(null);
     }
 
     @Post("/create")
     @Produces(MediaType.APPLICATION_JSON)
-    public Book create(@Body @Valid BookSaveRequest bookSaveRequest) {
-        return bookRepository.save(bookSaveRequest.asBook());
+    public Rating create(@Body @Valid RatingSaveRequest ratingSaveRequest) {
+        return ratingRepository.save(ratingSaveRequest.asRating());
     }
 }

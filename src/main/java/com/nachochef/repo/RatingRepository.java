@@ -11,7 +11,7 @@ import java.util.Optional;
 @Singleton
 public class RatingRepository implements Repository<Rating> {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public RatingRepository(EntityManager entityManager) {
         this.entityManager = entityManager;

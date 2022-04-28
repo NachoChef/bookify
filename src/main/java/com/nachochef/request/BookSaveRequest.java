@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @Getter
 @Introspected
-public class SaveRequest {
+public class BookSaveRequest {
     @NotBlank
     private String isbn;
 

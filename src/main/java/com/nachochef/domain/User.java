@@ -4,8 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -32,15 +40,21 @@ public class User {
     private String email;
 
     @Column(name = "date_created", nullable = false)
-    private String dateCreated;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime dateCreated;
 
     /**
      * for new users, man
      */
-    public User(String username, String name, String email, String dateCreated) {
+    public User(String username, String name, String email) {
         this.username = username;
         this.name = name;
         this.email = email;
-        this.dateCreated = dateCreated;
+    }
+
+    @PrePersist
+    void preInsert() {
+        if (this.dateCreated == null)
+            this.dateCreated = LocalDateTime.now();;
     }
 }
